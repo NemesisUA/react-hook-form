@@ -5,11 +5,15 @@ function App() {
   const {
     register,
     formState: { errors },
-    handleSubmit
-  } = useForm();
+    handleSubmit,
+    reset
+  } = useForm(
+    { mode: 'onBlur' }
+  );
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
+    reset();
   };
 
   return (
@@ -33,6 +37,22 @@ function App() {
 
         <div style={{ height: '20px', color: 'red' }}>
           {errors?.firstName && <p>{errors?.firstName?.message || 'Error!'}</p>}
+        </div>
+
+        <label >
+          Last Name:
+          {/* register your input into the hook by invoking the "register" function */}
+          <input
+            {...register('lastName', {
+              required: 'Поле обовязкове',
+              minLength: {
+                value: 5, message: 'Мінімальна довжина 5 символів'
+              }
+            })} />
+        </label>
+
+        <div style={{ height: '20px', color: 'red' }}>
+          {errors?.lastName && <p>{errors?.lastName?.message || 'Error!'}</p>}
         </div>
 
         <input type="submit" />
