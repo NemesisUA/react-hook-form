@@ -2,7 +2,7 @@
 
 ## 1) Register input
 
-![step 1](image.png)
+![step 1](./src/assets/image.png)
 
 Using the spread syntax ({...register('firstName')}) with react-hook-form is necessary because register('firstName') returns an object containing multiple props (onChange, onBlur, name, and ref) that need to be passed to the input element.
 
@@ -36,7 +36,7 @@ Using {...register('firstName')} simplifies this process, automatically applying
         </div>
 ```
 
-![alt text](image-2.png)
+![alt text](./src/assets/image-2.png)
 
 ## 3) Reset Form After submitting
 
@@ -65,7 +65,7 @@ const {
   );
   ```
 
-  ![mode](image-3.png)
+  ![mode](./src/assets/image-3.png)
 
   In react-hook-form, the mode option defines when the validation and re-rendering occur for form fields. The available modes are:
 
