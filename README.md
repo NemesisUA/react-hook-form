@@ -1,8 +1,18 @@
-# React + Vite
+# React Hook Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1) Register input
 
-Currently, two official plugins are available:
+![step 1](image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Using the spread syntax ({...register('firstName')}) with react-hook-form is necessary because register('firstName') returns an object containing multiple props (onChange, onBlur, name, and ref) that need to be passed to the input element.
+
+Without the spread syntax, you would need to manually assign each property:
+
+```
+const { ref, onChange, onBlur, name } = register('firstName');
+
+<input ref={ref} onChange={onChange} onBlur={onBlur} name={name} />
+```
+
+Using {...register('firstName')} simplifies this process, automatically applying all required properties to the input.
+
